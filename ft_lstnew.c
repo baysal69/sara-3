@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 18:06:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/09 16:18:14 by sel-khao         ###   ########.fr       */
+/*   Updated: 2024/12/13 20:31:18 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*new_node;
 
-	new_node = malloc(sizeof(t_list));
+	new_node = (t_list *)malloc(sizeof(t_list));
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
