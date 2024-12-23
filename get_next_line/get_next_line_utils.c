@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:53:48 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/22 21:18:26 by sel-khao         ###   ########.fr       */
+/*   Updated: 2024/12/23 21:24:52 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ int ft_trunc(char *str)
 	int	i;
 
 	i = 0;
-	if (!str)
-		return (-1);
+	if (!str)//no str to process
+		return (-1);//pointer invalid
 	while (str[i])
 	{
 		if (str[i] == '\n')
-			return (i);
+			return (i);//return new line
 		i++;
 	}
-	return (-1);
+	return (-1);//we’ve gone through str w/o finding a newline
 }
