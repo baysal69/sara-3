@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 14:52:27 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/02 19:54:08 by sel-khao         ###   ########.fr       */
+/*   Created: 2025/01/02 19:49:42 by sel-khao          #+#    #+#             */
+/*   Updated: 2025/01/02 20:38:22 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 256
 # endif
 
 typedef struct s_utils
