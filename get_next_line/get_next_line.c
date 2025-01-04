@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:51:24 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/02 19:45:10 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/01/04 20:58:00 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ char	*get_next_line(int fd)
 	t_utils		utils;
 
 	initial(&utils);
-	if (BUFFER_SIZE <= 0 || fd < 0)
-		return (NULL);
+	if (BUFFER_SIZE <= 0 || (read(fd, utils.buffer, 0)) < 0)
+		return (freed(&line));
 	utils.buffer = malloc(BUFFER_SIZE + 1);
 	if (!utils.buffer)
-		return (NULL);
+		return (freed(&line));
 	while (utils.readed == BUFFER_SIZE && utils.trunc == -1)
 	{
 		utils.readed = read(fd, utils.buffer, BUFFER_SIZE);
@@ -80,13 +80,14 @@ char	*get_next_line(int fd)
 	return (utils.next_line);
 }
 
-/* #include <fcntl.h>
+/* #include <stdio.h>
+#include <fcntl.h>
 int main (void)
 {
 	int	fd;
 	char *line;
 
-	fd = open("hope.txt", O_RDONLY);
+	fd = open("hi.txt", O_RDONLY);
 	if (fd == -1)
 	{
 		printf("%s\n", "got unlucky :c");

@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:50:33 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/02 20:37:43 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/01/04 21:25:54 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 static char	*freed(char **str)
 {
-	free(*str);
-	*str = NULL;
+	if (*str != NULL)
+	{
+		free(*str);
+		*str = NULL;
+	}
 	return (NULL);
 }
 
@@ -58,11 +61,11 @@ char	*get_next_line(int fd)
 	t_utils		utils;
 
 	initial(&utils);
-	if (BUFFER_SIZE <= 0 || fd < 0)
-		return (NULL);
+	if (BUFFER_SIZE <= 0 || fd < 0 || (read(fd, utils.buffer, 0)) < 0)
+		return (freed(&line[fd]));
 	utils.buffer = malloc(BUFFER_SIZE + 1);
 	if (!utils.buffer)
-		return (NULL);
+		return (freed(&line[fd]));
 	while (utils.readed == BUFFER_SIZE && utils.trunc == -1)
 	{
 		utils.readed = read(fd, utils.buffer, BUFFER_SIZE);
