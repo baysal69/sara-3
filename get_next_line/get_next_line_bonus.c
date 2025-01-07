@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:50:33 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/04 21:25:54 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:15:04 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 static char	*freed(char **str)
 {
-	if (*str != NULL)
-	{
-		free(*str);
-		*str = NULL;
-	}
+	free(*str);
+	*str = NULL;
 	return (NULL);
 }
 
