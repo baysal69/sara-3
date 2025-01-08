@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:49:42 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/06 12:13:46 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:33:16 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_utils
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
-void	ft_strlcpy(char *dst, char *src, int size);
+void	initial(t_utils *utils);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *s);
 int		ft_trunc(char *str);

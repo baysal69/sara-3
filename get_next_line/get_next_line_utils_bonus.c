@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 19:47:50 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/02 19:57:40 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:32:53 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,13 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-void	ft_strlcpy(char *dst, char *src, int size)
+void	initial(t_utils *utils)
 {
-	int	i;
-
-	i = 0;
-	while (src[i] && i < size - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
+	utils->next_line = NULL;
+	utils->buffer = NULL;
+	utils->left_over = NULL;
+	utils->readed = BUFFER_SIZE;
+	utils->trunc = -1;
 }
 
 char	*ft_strdup(char *s)

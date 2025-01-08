@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:52:27 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/02 19:54:08 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:32:36 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 5
 # endif
 
 typedef struct s_utils
@@ -32,9 +32,9 @@ typedef struct s_utils
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
-void	ft_strlcpy(char *dst, char *src, int size);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *s);
 int		ft_trunc(char *str);
+void	initial(t_utils *utils);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:51:24 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/06 12:00:25 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:35:20 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static char	*freed(char **str)
 
 static char	*last_line(char **line)
 {
-	char	*tmp;
+	char	*temp;
 
-	tmp = ft_strdup(*line);
+	temp = ft_strdup(*line);
 	freed(line);
-	return (tmp);
+	return (temp);
 }
 
 static char	*trunc_line(char **line, int trunc)
@@ -33,23 +33,27 @@ static char	*trunc_line(char **line, int trunc)
 	char	*next_line;
 	char	*temp;
 
-	next_line = malloc(trunc + 2);
+	next_line = ft_strdup(*line);
 	if (!next_line)
 		return (freed(line));
-	ft_strlcpy(next_line, *line, trunc + 2);
+	next_line[trunc + 1] = '\0';
 	temp = *line;
 	*line = ft_strdup((*line) + trunc + 1);
 	freed(&temp);
 	return (next_line);
 }
 
-static void	initial(t_utils *utils)
+static char	*final_part(char **line, t_utils utils)
 {
-	utils->next_line = NULL;
-	utils->buffer = NULL;
-	utils->left_over = NULL;
-	utils->readed = BUFFER_SIZE;
-	utils->trunc = -1;
+	freed(&utils.buffer);
+	if (utils.trunc == -1)
+	{
+		utils.left_over = last_line(line);
+		return (utils.left_over);
+	}
+	else
+		utils.next_line = trunc_line(line, utils.trunc);
+	return (utils.next_line);
 }
 
 char	*get_next_line(int fd)
@@ -58,7 +62,7 @@ char	*get_next_line(int fd)
 	t_utils		utils;
 
 	initial(&utils);
-	if (BUFFER_SIZE <= 0 || (read(fd, utils.buffer, 0)) < 0)
+	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (freed(&line));
 	utils.buffer = malloc(BUFFER_SIZE + 1);
 	if (!utils.buffer)
@@ -66,20 +70,16 @@ char	*get_next_line(int fd)
 	while (utils.readed == BUFFER_SIZE && utils.trunc == -1)
 	{
 		utils.readed = read(fd, utils.buffer, BUFFER_SIZE);
+		if (utils.readed < 0)
+			return (freed(&utils.buffer), freed(&line));
 		utils.buffer[utils.readed] = '\0';
 		utils.left_over = line;
 		line = ft_strjoin(line, utils.buffer);
 		freed(&utils.left_over);
 		utils.trunc = ft_trunc(line);
 	}
-	freed(&utils.buffer);
-	if (utils.trunc == -1)
-		return (utils.left_over = last_line(&line));
-	else
-		utils.next_line = trunc_line(&line, utils.trunc);
-	return (utils.next_line);
+	return (final_part(&line, utils));
 }
-
 /* #include <stdio.h>
 #include <fcntl.h>
 int main (void)

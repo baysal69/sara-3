@@ -6,11 +6,32 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:53:48 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/01/02 19:38:41 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:26:34 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	initial(t_utils *utils)
+{
+	utils->next_line = NULL;
+	utils->buffer = NULL;
+	utils->left_over = NULL;
+	utils->readed = BUFFER_SIZE;
+	utils->trunc = -1;
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !(*str))
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
+}
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -41,29 +62,20 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-int	ft_strlen(char *str)
+int	ft_trunc(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!str || !(*str))
-		return (0);
+	if (!str)
+		return (-1);
 	while (str[i])
-		i++;
-	return (i);
-}
-
-void	ft_strlcpy(char *dst, char *src, int size)
-{
-	int	i;
-
-	i = 0;
-	while (src[i] && i < size - 1)
 	{
-		dst[i] = src[i];
+		if (str[i] == '\n')
+			return (i);
 		i++;
 	}
-	dst[i] = '\0';
+	return (-1);
 }
 
 char	*ft_strdup(char *s)
@@ -86,20 +98,4 @@ char	*ft_strdup(char *s)
 	}
 	str[len] = '\0';
 	return (str);
-}
-
-int	ft_trunc(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (-1);
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
-	}
-	return (-1);
 }
