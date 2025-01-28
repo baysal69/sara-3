@@ -15,7 +15,10 @@
 #include <sys/types.h>
 #include <signal.h>
 
-
+void signal_handler(int signum);
+//function declaration
+//"Hey, there is a function called
+//signal_handler that takes an int as an argument and returns void"
 int main(void)
 {
 	pid_t PID;
@@ -29,11 +32,10 @@ int main(void)
 	return (0);
 }
 
-
 void signal_handler(int signum)
 {
-	static unsigned char bits;//stores bits as they arrive
-	static int len;//how many bits i have so far
+	static unsigned char bits;
+	static int len;
 
 	if (signum == SIGUSR1)
 	{

@@ -14,10 +14,48 @@
 #include <stdio.h>
 #include <sys/types.h>
 #include <signal.h>
+#include <stdlib.h>
+
+int	ft_atoi(const char *nptr)
+{
+	int	i;
+	int	sign;
+	int	res;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (nptr[i] == '+')
+		i++;
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = res * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (res * sign);
+}
 
 void convert_signs(char c, pid_t server_pid)
 {
-	
+	int b;
+
+	b = 7;
+	while(b >= 0)
+	{
+		if ((c >> b) & 1)
+			kill(server_pid, SIGUSR2);
+		else
+			kill(server_pid, SIGUSR1);
+		usleep(100);		
+		b--;
+	}
 }
 int main(int argc, char *argv[])
 {
@@ -29,14 +67,11 @@ int main(int argc, char *argv[])
 	{
 		server_pid = ft_atoi(argv[1]);
 		while (argv[2][i])
-		{
-			convert_signs(server_pid, argv[2][i]);			
-			i++;
-		}
+			convert_signs(argv[2][i++], server_pid);
 	}
 	else
 	{
-		printf("not the right number of arguments");
+		printf("not the right number of arguments\n");
 		exit(1);
 	}
 	return 0;
