@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 18:06:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/14 17:42:52 by sel-khao         ###   ########.fr       */
+/*   Created: 2024/12/06 19:34:58 by sel-khao          #+#    #+#             */
+/*   Updated: 2024/12/07 15:52:58 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_putnbr(long n)
 {
-	t_list	*new_node;
+	int	len;
 
-	new_node = (t_list *)malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
+	len = 0;
+	if (n < 0)
+	{
+		len += ft_putchar('-');
+		n = -n;
+	}
+	if (n > 9)
+		len += ft_putnbr(n / 10);
+	len += ft_putchar(n % 10 + '0');
+	return (len);
 }
 /* int main()
 {
-	char *content = "sara";
-	t_list *node1 = ft_lstnew(content);
-
-	printf("%s\n", (char *)node1->content);
-	//printf("%p", node1->next);
+    ft_putnbr('9');
 } */

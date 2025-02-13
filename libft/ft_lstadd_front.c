@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:06:34 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/12 15:02:31 by sel-khao         ###   ########.fr       */
+/*   Updated: 2024/12/15 18:40:52 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		printf("%s\n", (char *)tmp->content);
 		tmp = tmp->next;
 	}
-	printf("hey there\n");
+	printf("adding node:\n");
 	ft_lstadd_front(&head, node2);
 	t_list *tmpp = head;
 	while (tmpp)

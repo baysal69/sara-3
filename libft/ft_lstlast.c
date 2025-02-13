@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:30:46 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/13 20:19:38 by sel-khao         ###   ########.fr       */
+/*   Updated: 2024/12/15 18:54:43 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,15 @@ t_list	*ft_lstlast(t_list *lst)
 /* int main(void)
 {
 	t_list *node1 = ft_lstnew("sara");
-	t_list *node2 = ft_lst_new("wassim");
+	t_list *node2 = ft_lstnew("wassim");
+	t_list *node3;
 
 	ft_lstadd_back(&node1, node2);
 	t_list *temp = node1;
-	while(temp)
-	{
-		printf("%s\n", (char *)temp->content);
-		temp = temp->next;
-	}
+	node3 = ft_lstlast(node1);
+	printf("%s\n", (char *)node3->content);
 	free(node1);
-	free(node2);
+ 	//free(node2);
+	//free(node3);
 	return 0;
 } */

@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 18:09:45 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/13 20:30:51 by sel-khao         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:39:01 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void *ttoupper(void *content)
 	}
 	return (content);
 }
-int main() FUNZIONA
+int main()
 {
 	t_list *node1 = ft_lstnew(ft_strdup("sara"));
 	t_list *node2 = ft_lstnew(ft_strdup("wassim"));

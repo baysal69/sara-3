@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 18:06:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/14 17:42:52 by sel-khao         ###   ########.fr       */
+/*   Created: 2024/12/05 20:54:14 by sel-khao          #+#    #+#             */
+/*   Updated: 2024/12/08 17:16:37 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_putstr(unsigned char *str)
 {
-	t_list	*new_node;
+	int	i;
 
-	new_node = (t_list *)malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }
 /* int main()
 {
-	char *content = "sara";
-	t_list *node1 = ft_lstnew(content);
-
-	printf("%s\n", (char *)node1->content);
-	//printf("%p", node1->next);
+    unsigned char str[] = "hey pippino";
+    ft_printf("This is a number: %d and a string: %s\n", 42, str);
+    return 0;
 } */

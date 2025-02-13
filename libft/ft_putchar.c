@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 18:06:11 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/14 17:42:52 by sel-khao         ###   ########.fr       */
+/*   Created: 2024/12/05 20:48:37 by sel-khao          #+#    #+#             */
+/*   Updated: 2024/12/07 19:26:15 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_putchar(char c)
 {
-	t_list	*new_node;
-
-	new_node = (t_list *)malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
+	write(1, &c, 1);
+	return (1);
 }
 /* int main()
 {
-	char *content = "sara";
-	t_list *node1 = ft_lstnew(content);
-
-	printf("%s\n", (char *)node1->content);
-	//printf("%p", node1->next);
+	ft_putchar('A');
+	return (0);
 } */

@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 15:59:43 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/13 20:24:58 by sel-khao         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:23:47 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		lst = lst->next;
 	}
 }
-/* static void ttoupper(void *content)
+/* void ttoupper(void *content)
 {
 	char *str = (char *)content;
 
@@ -49,7 +49,7 @@ int main(void)
 		temp = temp->next;
 	}
     ft_lstclear(&node1, del);
-	free(node1);
-	free(node2);
+	//free(node1);
+	//free(node2);
 	return 0;
 } */

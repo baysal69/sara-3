@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 19:08:00 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/13 20:12:56 by sel-khao         ###   ########.fr       */
+/*   Updated: 2024/12/14 17:51:59 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		temp = *lst;
 		*lst = (*lst)->next;
 		del(temp->content);
-		free(temp);
+		free(temp);//free all node'content
 	}
-	*lst = NULL;
+	*lst = NULL;//list is now empty
 }
-/* void	 del(void *content)
+/*void	 del(void *content)
 {
 	if (content)
 		free(content);

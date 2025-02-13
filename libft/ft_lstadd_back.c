@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:53:52 by sel-khao          #+#    #+#             */
-/*   Updated: 2024/12/12 23:35:51 by sel-khao         ###   ########.fr       */
+/*   Updated: 2024/12/14 17:47:50 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*ptr;
 
-	ptr = *lst;
-	if (new == NULL)
+	ptr = *lst;//x attraversare la lista
+	if (new == NULL)//node is null, nothing to add
 		return ;
-	if (*lst == NULL)
+	if (*lst == NULL)//list is empty, so head is null
 	{
-		*lst = new;
+		*lst = new;//head must point to new node
 		return ;
 	}
-	ptr = ft_lstlast(*lst);
-	ptr->next = new;
+	ptr = ft_lstlast(*lst);//if list nt empty, find the last: next == null
+	ptr->next = new;//then add it last
 }
-/* int main()
+/* int main(void)
 {
 	t_list *head = NULL;
 	t_list *node1 = ft_lstnew("sara");
@@ -39,7 +39,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		printf("%s\n", (char *)tmp->content);
 		tmp = tmp->next;
 	}
-	printf("hey there\n");
+	printf("new node :\n");
 	ft_lstadd_back(&head, node2);
 	t_list *tmpp = head;
 	while (tmpp)
