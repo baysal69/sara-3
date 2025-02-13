@@ -54,7 +54,6 @@ int	main(int argc, char *argv[])
 	}
 	while (argv[2][i])
 		convert_signs(argv[2][i++], server_pid);
-	convert_signs('\0', server_pid);
 	pause();
 	return (0);
 }
