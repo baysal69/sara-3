@@ -6,7 +6,7 @@
 /*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:08:52 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/02/02 16:17:38 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/02/12 21:52:14 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,21 @@ int	main(int argc, char *argv[])
 	pid_t	server_pid;
 
 	i = 0;
-	if (argc == 3)
+	
+	if (argc != 3)
 	{
-		server_pid = ft_atoi(argv[1]);
-		while (argv[2][i])
-			convert_signs(argv[2][i++], server_pid);
-	}
-	else
-	{
-		ft_printf("not the right number of arguments\n");
+		ft_printf("not right number of arguments\n");
 		exit(1);
 	}
+	server_pid = ft_atoi(argv[1]);	
+	if (server_pid <= 0)
+	{
+		ft_printf("not valid PID\n");
+		exit(1);
+	}
+	while (argv[2][i])
+		convert_signs(argv[2][i++], server_pid);
+	convert_signs('\0', server_pid);
+	pause();
 	return (0);
 }
