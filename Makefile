@@ -1,11 +1,8 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I./
-
-SRC = one.c two.c three.c  push_swap.c
-
-OBJ = $(SRC:.c=.o)
-
 NAME = push_swap
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I
+SRC = one.c two.c three.c  push_swap.c
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 

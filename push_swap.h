@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
+/*   By: sara <sara@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 20:55:31 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/03/01 16:26:47 by sel-khao         ###   ########.fr       */
+/*   Updated: 2025/03/03 20:04:55 by sara             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
 
 typedef struct s_list
 {
-	int data;
-	struct s_list *next;
-	struct s_list *prev;
-}	ps_list;
+	int				data;
+	struct s_list	*next;
+	struct s_list	*prev;
+}		t_ps;
 
-void	ft_sa(ps_list **stack_a);
-void	ft_sb(ps_list **stack_b);
-void	ft_ss(ps_list **stack_b, ps_list **stack_a);
-void	ft_pa(ps_list **stack_b, ps_list **stack_a);
-void	ft_pb(ps_list **stack_b, ps_list **stack_a);
-void	ft_ra(ps_list **stack_a);
-void	ft_rb(ps_list **stack_b);
-void	ft_rr(ps_list **stack_b, ps_list **stack_a);
-void	ft_rra(ps_list **stack_a);
-void	ft_rrb(ps_list **stack_b);
-void	ft_rrr(ps_list **stack_b, ps_list **stack_a);
+void	ft_sa(t_ps **stack_a, int i);
+void	ft_sb(t_ps **stack_b, int i);
+void	ft_ss(t_ps **stack_b, t_ps **stack_a);
+void	ft_pa(t_ps **stack_b, t_ps **stack_a);
+void	ft_pb(t_ps **stack_b, t_ps **stack_a);
+void	ft_ra(t_ps **stack_a, int i);
+void	ft_rb(t_ps **stack_b, int i);
+void	ft_rr(t_ps **stack_b, t_ps **stack_a);
+void	ft_rra(t_ps **stack_a, int i);
+void	ft_rrb(t_ps **stack_b, int i);
+void	ft_rrr(t_ps **stack_b, t_ps **stack_a);
 
 #endif
