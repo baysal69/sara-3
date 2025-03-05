@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sara <sara@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 20:55:31 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/03/03 20:04:55 by sara             ###   ########.fr       */
+/*   Updated: 2025/03/05 12:34:20 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_list
 	int				data;
 	struct s_list	*next;
 	struct s_list	*prev;
-}		t_ps;
+}	t_ps;
 
 void	ft_sa(t_ps **stack_a, int i);
 void	ft_sb(t_ps **stack_b, int i);
@@ -35,5 +35,9 @@ void	ft_rr(t_ps **stack_b, t_ps **stack_a);
 void	ft_rra(t_ps **stack_a, int i);
 void	ft_rrb(t_ps **stack_b, int i);
 void	ft_rrr(t_ps **stack_b, t_ps **stack_a);
+void	quick_sort(t_ps **stack_a, t_ps **stack_b);
+void	partition(t_ps **stack_a, t_ps **stack_b);
+long	dupli(int argc, char **argv);
+int	vali_num(int argc, char **argv);
 
 #endif

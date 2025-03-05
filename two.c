@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   two.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sara <sara@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sel-khao <sel-khao <marvin@42.fr>>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 15:54:50 by sel-khao          #+#    #+#             */
-/*   Updated: 2025/03/03 20:04:55 by sara             ###   ########.fr       */
+/*   Updated: 2025/03/05 09:37:40 by sel-khao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	ft_ra(t_ps **stack_a, int i)
 	t_ps	*tmp;
 	t_ps	*last;
 
-	tmp = *stack_a;
-	last = *stack_a;
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
 		return ;
+	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
 	if (*stack_a)
 		(*stack_a)->prev = NULL;
+	last = *stack_a;
 	while (last->next != NULL)
 		last = last->next;
 	tmp->next = NULL;
@@ -38,13 +38,13 @@ void	ft_rb(t_ps **stack_b, int i)
 	t_ps	*tmp;
 	t_ps	*last;
 
-	tmp = *stack_b;
-	last = *stack_b;
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
 		return ;
+	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;
 	if (*stack_b)
 		(*stack_b)->prev = NULL;
+	last = *stack_b;
 	while (last->next != NULL)
 		last = last->next;
 	last->next = tmp;
