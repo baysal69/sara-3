@@ -1,26 +1,51 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I./
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -Ilibft
 
-SRC = one.c two.c three.c  push_swap.c
+SRCS_SERVER = server.c
+SRCS_CLIENT = client.c
 
-OBJ = $(SRC:.c=.o)
+OBJS_SERVER = $(SRCS_SERVER:.c=.o)
+OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
 
-NAME = push_swap
+NAME_SERVER = server
+NAME_CLIENT = client
 
-all: $(NAME)
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+all: $(LIBFT) $(NAME_SERVER) $(NAME_CLIENT)
+
+bonus: $(LIBFT)
+	@$(MAKE) -C $(LIBFT_DIR) bonus > /dev/null
+	@echo "goot job!•ᴗ•"
+
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR) > /dev/null
+	@echo "libft's ready, dont forget the bonus >ᴗ<"
+
+$(NAME_SERVER): $(OBJS_SERVER) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS_SERVER) -L$(LIBFT_DIR) -lft -o $(NAME_SERVER) > /dev/null
+	@echo "server's readyy!"
+
+$(NAME_CLIENT): $(OBJS_CLIENT) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS_CLIENT) -L$(LIBFT_DIR) -lft -o $(NAME_CLIENT) > /dev/null
+	@echo "client's readyy!"
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ > /dev/null
 
 clean:
-	rm -rf $(OBJ)
+	@rm -f $(OBJS_SERVER) $(OBJS_CLIENT)
+	@$(MAKE) -C $(LIBFT_DIR) clean > /dev/null
+	@echo "object files got cleaned ♬⋆.˚"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME_SERVER) $(NAME_CLIENT)
+	@$(MAKE) -C $(LIBFT_DIR) fclean > /dev/null
+	@echo "$(NAME_SERVER) and $(NAME_CLIENT) got cleaned too ᐢ. .ᐢ"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.SECONDARY: $(OBJS_SERVER) $(OBJS_CLIENT)
+
+.PHONY: all clean fclean re 
